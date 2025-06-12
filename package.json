@@ -1,0 +1,27 @@
+{
+  "name": "node-api-base",
+  "version": "1.0.0",
+  "description": "Basic API created in NodeJs with TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusfurlan7/node-api-base.git"
+  },
+  "author": "Matheus Furlan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusfurlan7/node-api-base/issues"
+  },
+  "homepage": "https://github.com/matheusfurlan7/node-api-base#readme",
+  "dependencies": {
+    "fastify": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "tsx": "^4.20.1",
+    "typescript": "^5.8.3"
+  }
+}
