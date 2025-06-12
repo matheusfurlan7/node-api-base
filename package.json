@@ -4,7 +4,7 @@
   "description": "Basic API created in NodeJs with TypeScript",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/index.ts"
+    "dev": "nodemon --watch 'src/**/*.*' --exec 'tsx' src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.1",
+    "nodemon": "^3.1.10",
     "tsx": "^4.20.1",
     "typescript": "^5.8.3"
   }
