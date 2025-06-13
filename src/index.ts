@@ -1,12 +1,6 @@
-import Fastify from 'fastify';
+import app from './app';
 
-const app = Fastify();
-
-app.get('/health', async (request, reply) => {
-  return { status: 'ok' };
-});
-
-const start = async () => {
+async function start() {
   try {
     await app.listen({ port: 3000 });
     console.log('Server is running on http://localhost:3000');
@@ -14,6 +8,6 @@ const start = async () => {
     app.log.error(err);
     process.exit(1);
   }
-};
+}
 
 start();
