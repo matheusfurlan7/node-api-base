@@ -1,4 +1,4 @@
-import app from './app';
+import app from '@src/app';
 
 async function start() {
   try {

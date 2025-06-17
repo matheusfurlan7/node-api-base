@@ -1,1 +1,8 @@
+# apply format and check for warnsing about unused variable and parameters
 npx lint-staged
+
+# automated testing
+npx vitest --run --silent
+
+# check if the code is compilable
+npx tsc --noEmit

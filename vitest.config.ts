@@ -1,7 +1,9 @@
 import { defineConfig } from 'vitest/config';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   test: {
+    silent: true,
     environment: 'node',
     globals: true,
     include: ['src/**/*.test.ts'],
@@ -11,4 +13,5 @@ export default defineConfig({
       reporter: ['text', 'html'],
     },
   },
+  plugins: [tsconfigPaths()],
 });
