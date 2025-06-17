@@ -2,7 +2,7 @@
 npx lint-staged
 
 # automated testing
-npx vitest --run --silent
+npx vitest > /dev/null 2>&1
 
 # check if the code is compilable
 npx tsc --noEmit
