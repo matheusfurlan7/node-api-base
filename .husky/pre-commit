@@ -1,0 +1,8 @@
+# apply format and check for warnsing about unused variable and parameters
+npx lint-staged
+
+# automated testing
+npx vitest > /dev/null 2>&1
+
+# check if the code is compilable
+npx tsc --noEmit
