@@ -17,7 +17,6 @@ API base created with **Node.js**, **TypeScript**, and **Fastify**, ready to be 
 - [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
 - [Husky](https://typicode.github.io/husky/) + [lint-staged](https://github.com/okonet/lint-staged)
 - [tsc-alias](https://github.com/justkey007/tsc-alias)
-- [Supertest](https://github.com/ladjs/supertest) (for HTTP tests)
 - Path aliases with `tsconfig-paths`
 
 ---
