@@ -11,8 +11,8 @@
     "format": "prettier . --write",
     "prepare": "husky",
     "build": "tsc && tsc-alias",
-    "dev": "nodemon --watch src --ext ts --exec \"ts-node -r tsconfig-paths/register src/index.ts\"",
-    "start": "node ./dist/index.js"
+    "dev": "nodemon --watch src --ext ts --exec \"ts-node -r tsconfig-paths/register src/infra/http/index.ts\"",
+    "start": "node ./dist/infra/http/index.js"
   },
   "lint-staged": {
     "**/*.{ts,js,json}": [
@@ -32,7 +32,8 @@
   "homepage": "https://github.com/matheusfurlan7/node-api-base#readme",
   "dependencies": {
     "dotenv": "^17.0.0",
-    "fastify": "^5.3.3"
+    "fastify": "^5.3.3",
+    "pino-pretty": "^13.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",

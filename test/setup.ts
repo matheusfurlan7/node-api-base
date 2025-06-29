@@ -1,4 +1,4 @@
-import app from '../src/app';
+import app from '../src/infra/http/app';
 import { beforeAll, afterAll } from 'vitest';
 
 beforeAll(async () => {

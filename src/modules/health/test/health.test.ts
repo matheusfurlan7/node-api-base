@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import app from '@src/app';
+import app from '@src/infra/http/app';
 
 describe('GET /health', () => {
   it('should return status ok', async () => {
