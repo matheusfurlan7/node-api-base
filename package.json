@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/matheusfurlan7/node-api-base#readme",
   "dependencies": {
+    "@fastify/compress": "^8.0.3",
     "@fastify/cors": "^11.0.1",
     "@fastify/rate-limit": "^10.3.0",
     "dotenv": "^17.0.0",
