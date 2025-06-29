@@ -1,9 +1,13 @@
 import app from '@src/app';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function start() {
   try {
-    await app.listen({ port: 3000 });
-    console.log('Server is running on http://localhost:3000');
+    const PORT = process.env.PORT || 3000;
+    await app.listen({ port: Number(PORT) });
+    console.log(`Server is running on http://localhost:${PORT}`);
   } catch (err) {
     app.log.error(err);
     process.exit(1);
