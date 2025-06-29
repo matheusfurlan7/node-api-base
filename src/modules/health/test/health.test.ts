@@ -9,6 +9,9 @@ describe('GET /health', () => {
     });
 
     expect(res.statusCode).toBe(200);
-    expect(res.json()).toEqual({ status: 'ok' });
+
+    const payload = JSON.parse(res.body);
+    expect(payload.status).toBe('ok');
+    expect(payload.uptime).toBeDefined();
   });
 });
