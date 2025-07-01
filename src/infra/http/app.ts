@@ -1,20 +1,32 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyInstance } from 'fastify';
 
 import logger from '@plugins/logger';
-import { metricsPlugin } from '@plugins/metrics';
-import { rateLimitPlugin } from './plugins/rate-limit';
-import { corsPlugin } from './plugins/cors';
-import { compressPlugin } from './plugins/compress';
 
-import healthRoutes from '@modules/health/router/health.router';
+type FastifyInstanceFunction = (fastifyFunctions: FastifyInstance) => Promise<void>;
 
-const app = Fastify({ logger });
+class APP {
+  public readonly server: FastifyInstance;
 
-metricsPlugin(app);
-rateLimitPlugin(app);
-corsPlugin(app);
-compressPlugin(app);
+  constructor(config: {
+    plugins?: FastifyInstanceFunction[];
+    routers?: FastifyInstanceFunction[];
+  }) {
+    this.server = Fastify({ logger });
 
-app.register(healthRoutes, { prefix: '/health' });
+    if (config.plugins)
+      for (const plugin of config.plugins) {
+        plugin(this.server);
+      }
 
-export default app;
+    if (config.routers)
+      for (const routers of config.routers) {
+        routers(this.server);
+      }
+  }
+
+  public async listen(port: number) {
+    await this.server.listen({ port: Number(port) });
+  }
+}
+
+export default APP;
