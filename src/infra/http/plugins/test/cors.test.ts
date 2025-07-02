@@ -1,7 +1,5 @@
 import APP from '@infra/http/app';
 
-import dotenv from 'dotenv';
-
 import { corsPlugin } from '@plugins/cors';
 import healthRoutes from '@modules/health/router/health.router';
 
@@ -9,7 +7,7 @@ describe('CORS', () => {
   let app: APP;
 
   beforeAll(async () => {
-    dotenv.config();
+    process.env.CORS_ORIGINS = 'localhost:80';
 
     app = new APP({
       plugins: [corsPlugin],
