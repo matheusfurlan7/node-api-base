@@ -8,11 +8,6 @@ export default tseslint.config(
   tseslint.configs.strict,
   tseslint.configs.stylistic,
   {
-    ignores: [
-        'dist', 
-        'coverage', 
-        'package-lock.json',
-        'commitlint.config.js'
-    ],
+    ignores: ['dist', 'coverage', 'package-lock.json', 'commitlint.config.js'],
   },
 );

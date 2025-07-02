@@ -3,7 +3,7 @@
 [![Tests](https://img.shields.io/github/actions/workflow/status/matheusfurlan7/node-api-base/tests.yml?label=tests)](https://github.com/matheusfurlan7/node-api-base/actions)
 [![License](https://img.shields.io/github/license/matheusfurlan7/node-api-base)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/matheusfurlan7/node-api-base)](https://github.com/matheusfurlan7/node-api-base/issues)
- 
+
 API base created with **Node.js**, **TypeScript**, and **Fastify**, ready to be used in new projects with best practices for structure, testing, linting, and formatting.
 
 ---

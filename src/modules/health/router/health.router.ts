@@ -1,7 +1,11 @@
 import { FastifyInstance } from 'fastify';
 
-export default async function healthRoutes(fastify: FastifyInstance) {
+async function registerHealthRoutes(fastify: FastifyInstance) {
   fastify.get('/', async () => {
-    return { status: 'ok' };
+    return { status: 'ok', uptime: process.uptime() };
   });
+}
+
+export default async function healthRoutes(fastify: FastifyInstance) {
+  fastify.register(registerHealthRoutes, { prefix: '/health' });
 }
