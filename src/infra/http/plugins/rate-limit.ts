@@ -10,7 +10,7 @@ export async function rateLimitPlugin(app: FastifyInstance) {
     errorResponseBuilder: () => ({
       statusCode: 429,
       error: 'Too Many Requests',
-      message: 'Você excedeu o limite de requisições.',
+      message: 'You have exceeded the request limit.',
     }),
   });
 }
