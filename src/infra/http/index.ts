@@ -10,7 +10,7 @@ import { compressPlugin } from '@plugins/compress';
 import { SwaggerPlugin } from '@plugins/swagger';
 
 import healthRoutes from '@modules/health/router/health.router';
-import testCompressionRoutes from '@infra/http/plugins/test/testCompressionRoutes.router';
+import testCompressionRoutes from '@src/infra/http/plugins/__test__/testCompressionRoutes.router';
 
 dotenv.config();
 

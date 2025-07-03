@@ -5,7 +5,7 @@ describe('logger config', async () => {
     vi.resetModules();
   });
 
-  it('usa "info" como padrão para LOG_LEVEL', async () => {
+  it('uses "info" with default to LOG_LEVEL', async () => {
     delete process.env.LOG_LEVEL;
     delete process.env.NODE_ENV;
 
@@ -14,7 +14,7 @@ describe('logger config', async () => {
     expect(config.level).toBe('info');
   });
 
-  it('usa LOG_LEVEL definido no ambiente', async () => {
+  it('uses LOG_LEVEL defined in the environment', async () => {
     process.env.LOG_LEVEL = 'debug';
 
     const config = (await import('@plugins/logger')).default;
@@ -22,7 +22,7 @@ describe('logger config', async () => {
     expect(config.level).toBe('debug');
   });
 
-  it('transport deve ser undefined em produção', async () => {
+  it('transport must undefined in production', async () => {
     process.env.NODE_ENV = 'production';
 
     const config = (await import('@plugins/logger')).default;
@@ -30,7 +30,7 @@ describe('logger config', async () => {
     expect(config.transport).toBeUndefined();
   });
 
-  it('transport deve conter pino-pretty fora de produção', async () => {
+  it('transport must contain pino-pretty out of production', async () => {
     process.env.NODE_ENV = 'development';
 
     const config = (await import('@plugins/logger')).default;

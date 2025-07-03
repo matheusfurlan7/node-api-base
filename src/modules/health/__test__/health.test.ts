@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import APP from '@src/infra/http/app';
-import healthRoutes from '../router/health.router';
+
+import APP from '@infra/http/app';
+import healthRoutes from '@modules/health/router/health.router';
 
 describe('GET /health', () => {
   let app: APP;

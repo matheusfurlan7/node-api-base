@@ -1,9 +1,8 @@
-import APP from '@infra/http/app';
+import { describe, it, expect, vi, beforeEach, beforeAll, afterAll } from 'vitest';
 
+import APP from '@infra/http/app';
 import { corsPlugin } from '@plugins/cors';
 import healthRoutes from '@modules/health/router/health.router';
-
-import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const createApp = async (): Promise<APP> => {
   const app = new APP({

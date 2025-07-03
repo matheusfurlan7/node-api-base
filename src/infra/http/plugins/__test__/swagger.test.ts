@@ -1,6 +1,7 @@
+import { beforeAll, afterAll, it, expect } from 'vitest';
+
 import APP from '@infra/http/app';
 import { SwaggerPlugin } from '@plugins/swagger';
-import { beforeAll, afterAll, it, expect } from 'vitest';
 
 describe('SwaggerPlugin', () => {
   let app: APP;
@@ -15,7 +16,7 @@ describe('SwaggerPlugin', () => {
     await app.server.close();
   });
 
-  it('deve retornar a documentação do Swagger', async () => {
+  it('should answer the swagger documentation', async () => {
     const res = await app.server.inject({
       method: 'GET',
       url: '/docs',
@@ -25,7 +26,7 @@ describe('SwaggerPlugin', () => {
     expect(res.body).toContain('Swagger UI');
   });
 
-  it('deve ter a configuração correta no OpenAPI', async () => {
+  it('it must be the correct configure in OpenAPI', async () => {
     const res = await app.server.inject({
       method: 'GET',
       url: '/docs/json',

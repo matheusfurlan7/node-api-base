@@ -1,7 +1,7 @@
 import APP from '@infra/http/app';
 
-import healthRoutes from '@modules/health/router/health.router';
 import { rateLimitPlugin } from '@plugins/rate-limit';
+import healthRoutes from '@modules/health/router/health.router';
 
 describe('Rate limiting', () => {
   let app: APP;
