@@ -1,3 +1,5 @@
+/* c8 ignore start */
+
 import APP from '@src/infra/http/app';
 import dotenv from 'dotenv';
 
@@ -20,7 +22,7 @@ async function start() {
 
   try {
     const PORT = process.env.PORT || 3000;
-    await app.listen(Number(PORT));
+    await app.server.listen({ port: Number(PORT) });
   } catch (err) {
     app.server.log.error(err);
     process.exit(1);

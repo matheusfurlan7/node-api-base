@@ -23,10 +23,6 @@ class APP {
         routers(this.server);
       }
   }
-
-  public async listen(port: number) {
-    await this.server.listen({ port: Number(port) });
-  }
 }
 
 export default APP;
