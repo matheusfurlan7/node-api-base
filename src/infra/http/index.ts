@@ -2,9 +2,10 @@ import APP from '@src/infra/http/app';
 import dotenv from 'dotenv';
 
 import { metricsPlugin } from '@plugins/metrics';
-import { rateLimitPlugin } from './plugins/rate-limit';
-import { corsPlugin } from './plugins/cors';
-import { compressPlugin } from './plugins/compress';
+import { rateLimitPlugin } from '@plugins/rate-limit';
+import { corsPlugin } from '@plugins/cors';
+import { compressPlugin } from '@plugins/compress';
+import { SwaggerPlugin } from '@plugins/swagger';
 
 import healthRoutes from '@modules/health/router/health.router';
 import testCompressionRoutes from '@infra/http/plugins/test/testCompressionRoutes.router';
@@ -13,7 +14,7 @@ dotenv.config();
 
 async function start() {
   const app: APP = new APP({
-    plugins: [metricsPlugin, corsPlugin, rateLimitPlugin, compressPlugin],
+    plugins: [metricsPlugin, corsPlugin, rateLimitPlugin, compressPlugin, SwaggerPlugin],
     routers: [healthRoutes, testCompressionRoutes],
   });
 
