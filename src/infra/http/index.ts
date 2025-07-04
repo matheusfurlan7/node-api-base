@@ -1,26 +1,21 @@
 import APP from '@src/infra/http/app';
-import dotenv from 'dotenv';
+import logger from '@plugins/logger';
+import plugins from '@plugins/index';
 
-import { metricsPlugin } from '@plugins/metrics';
-import { rateLimitPlugin } from '@plugins/rate-limit';
-import { corsPlugin } from '@plugins/cors';
-import { compressPlugin } from '@plugins/compress';
-import { SwaggerPlugin } from '@plugins/swagger';
-
-import healthRoutes from '@modules/health/router/health.router';
-import testCompressionRoutes from '@infra/http/plugins/test/testCompressionRoutes.router';
-
-dotenv.config();
+import moduleRoutes from '@modules/modules.routers';
 
 async function start() {
+  (await import('dotenv')).config();
+
   const app: APP = new APP({
-    plugins: [metricsPlugin, corsPlugin, rateLimitPlugin, compressPlugin, SwaggerPlugin],
-    routers: [healthRoutes, testCompressionRoutes],
+    options: { logger },
+    plugins,
+    routers: [moduleRoutes],
   });
 
   try {
     const PORT = process.env.PORT || 3000;
-    await app.listen(Number(PORT));
+    await app.server.listen({ port: Number(PORT) });
   } catch (err) {
     app.server.log.error(err);
     process.exit(1);

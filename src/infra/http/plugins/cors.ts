@@ -3,19 +3,28 @@ import { FastifyInstance } from 'fastify';
 
 let allowedOrigins: string[] = [];
 
+const CorsOrigins = {
+  get: () => allowedOrigins,
+  set: (origins: string[]) => (allowedOrigins = origins),
+};
+
 export async function corsPlugin(app: FastifyInstance) {
+  if (process.env.CORS_ORIGINS != undefined)
+    CorsOrigins.set(process.env.CORS_ORIGINS?.split(',').map((origin) => origin.trim()));
+
   await app.register(cors, {
-    origin: (origin, cb) => {
-      if (allowedOrigins.length === 0) {
-        allowedOrigins = process.env.CORS_ORIGINS?.split(',').map((origin) => origin.trim()) ?? [];
-      }
+    origin:
+      process.env.CORS_ORIGINS === '*'
+        ? true
+        : (origin, cb) => {
+            const allowed = CorsOrigins.get();
 
-      if (!!origin && allowedOrigins.includes(origin)) {
-        return cb(null, true);
-      }
+            if (!!origin && allowed.includes(origin)) {
+              return cb(null, true);
+            }
 
-      cb(new Error('Origin not allowed by CORS'), false);
-    },
+            cb(new Error('Origin not allowed by CORS'), false);
+          },
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow the HTTP methods you want
     allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers you want
     exposedHeaders: ['Content-Range'], // Headers than can be exposed to the client

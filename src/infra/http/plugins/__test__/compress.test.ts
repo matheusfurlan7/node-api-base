@@ -1,8 +1,8 @@
 import { gunzipSync } from 'zlib';
-import APP from '@infra/http/app';
 
+import APP from '@infra/http/app';
 import { compressPlugin } from '@plugins/compress';
-import testCompressionRoutes from '@plugins/test/testCompressionRoutes.router';
+import testCompressionRoutes from '@plugins/__test__/testCompressionRoutes.router';
 
 describe('Compression', () => {
   let app: APP;

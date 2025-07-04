@@ -1,5 +1,6 @@
-import APP from '@infra/http/app';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 
+import APP from '@infra/http/app';
 import { metricsPlugin } from '@plugins/metrics';
 
 describe('Metrics', () => {
