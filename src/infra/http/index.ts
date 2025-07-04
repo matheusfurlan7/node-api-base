@@ -1,22 +1,16 @@
-/* c8 ignore start */
-
 import APP from '@src/infra/http/app';
-import dotenv from 'dotenv';
-
-import { metricsPlugin } from '@plugins/metrics';
-import { rateLimitPlugin } from '@plugins/rate-limit';
-import { corsPlugin } from '@plugins/cors';
-import { compressPlugin } from '@plugins/compress';
-import { SwaggerPlugin } from '@plugins/swagger';
+import logger from '@plugins/logger';
+import plugins from '@plugins/index';
 
 import healthRoutes from '@modules/health/router/health.router';
 import testCompressionRoutes from '@src/infra/http/plugins/__test__/testCompressionRoutes.router';
 
-dotenv.config();
-
 async function start() {
+  (await import('dotenv')).config();
+
   const app: APP = new APP({
-    plugins: [metricsPlugin, corsPlugin, rateLimitPlugin, compressPlugin, SwaggerPlugin],
+    options: { logger },
+    plugins,
     routers: [healthRoutes, testCompressionRoutes],
   });
 
