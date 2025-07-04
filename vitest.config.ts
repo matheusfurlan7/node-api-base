@@ -16,6 +16,7 @@ export default defineConfig({
         'vitest.config.ts',
         'src/infra/http/index.ts',
         'src/infra/http/plugins/index.ts',
+        'src/modules/modules.routers.ts',
       ],
     },
   },

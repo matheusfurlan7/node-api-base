@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, beforeAll, afterAll } from 'vites
 
 import APP from '@infra/http/app';
 import { corsPlugin } from '@plugins/cors';
-import healthRoutes from '@modules/health/router/health.router';
+import healthRoutes from '@modules/health/health.routes';
 
 const createApp = async (): Promise<APP> => {
   const app = new APP({

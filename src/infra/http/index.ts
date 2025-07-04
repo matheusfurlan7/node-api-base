@@ -2,8 +2,7 @@ import APP from '@src/infra/http/app';
 import logger from '@plugins/logger';
 import plugins from '@plugins/index';
 
-import healthRoutes from '@modules/health/router/health.router';
-import testCompressionRoutes from '@src/infra/http/plugins/__test__/testCompressionRoutes.router';
+import moduleRoutes from '@modules/modules.routers';
 
 async function start() {
   (await import('dotenv')).config();
@@ -11,7 +10,7 @@ async function start() {
   const app: APP = new APP({
     options: { logger },
     plugins,
-    routers: [healthRoutes, testCompressionRoutes],
+    routers: [moduleRoutes],
   });
 
   try {
