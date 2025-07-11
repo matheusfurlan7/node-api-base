@@ -14,7 +14,7 @@ export const refreshSchema = {
     properties: {
       cookie: {
         type: 'string',
-        description: 'Cookie de autenticação, por exemplo: refreshToken=abc123',
+        description: 'Autentication Cookie, for example: refreshToken=abc123',
       },
     },
     required: ['cookie'],
