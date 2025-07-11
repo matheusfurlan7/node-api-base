@@ -12,8 +12,10 @@ describe('GET /auth', () => {
   const mocjwtkReply = () => {
     const reply: Partial<FastifyReply> = {
       status: vi.fn().mockReturnThis(),
+      setCookie: vi.fn().mockReturnThis(),
       send: vi.fn(),
     };
+
     return reply as FastifyReply;
   };
 
@@ -70,6 +72,13 @@ describe('GET /auth', () => {
       role: 'admin',
     });
 
+    expect(reply.setCookie).toHaveBeenCalledWith('refreshToken', expect.any(String), {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      path: '/auth/refresh',
+      maxAge: 60 * 60 * 24 * 7,
+    });
     expect(reply.send).toHaveBeenCalledWith({ accessToken: fakeToken });
   });
 });

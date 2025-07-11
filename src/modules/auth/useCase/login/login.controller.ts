@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { signAccessToken } from '@modules/auth/jwt';
+import { signAccessToken, signRefreshToken } from '@modules/auth/jwt';
 import { LoginResponse, LoginHeader } from './login.schema';
 
 export async function loginController(
@@ -19,6 +19,15 @@ export async function loginController(
   };
 
   const accessToken = signAccessToken(payload);
+  const refreshToken = signRefreshToken(payload);
+
+  reply.setCookie('refreshToken', refreshToken, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'strict',
+    path: '/auth/refresh',
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+  });
 
   return reply.send({ accessToken });
 }
