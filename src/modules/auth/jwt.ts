@@ -7,6 +7,10 @@ export function signAccessToken(payload: object) {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: '15m' });
 }
 
+export function verifyAccessToken(token: string) {
+  return jwt.verify(token, JWT_SECRET);
+}
+
 export function signRefreshToken(payload: object) {
   return jwt.sign(payload, JWT_REFRESH_SECRET, { expiresIn: '7d' });
 }
