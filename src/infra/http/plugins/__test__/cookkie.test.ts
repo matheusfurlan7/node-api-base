@@ -41,4 +41,14 @@ describe('cookiePlugin', () => {
     const body = await res.json();
     expect(body).toEqual({ user: 'Matheus' });
   });
+
+  it('should read a empty cookie', async () => {
+    const res = await app.server.inject({
+      method: 'GET',
+      url: '/get-cookie',
+    });
+
+    const body = await res.json();
+    expect(body).toEqual({ user: null });
+  });
 });

@@ -39,6 +39,7 @@ We have two different Dockerfiles to support development and production modes:
 docker build -f Dockerfile.dev -t my-app-dev .
 docker run --rm -it -p 3000:3000 my-app-dev
 ```
+
 This image includes hot reload using nodemon + ts-node, ideal for local development.
 
 ### 🚀 Build & run (production)
@@ -56,7 +57,7 @@ We support two Compose setups: one for development with hot-reload, and one opti
 
 ```bash
 docker compose up
-````
+```
 
 ## 🧪 Available Scripts
 

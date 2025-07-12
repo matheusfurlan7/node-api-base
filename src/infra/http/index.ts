@@ -2,6 +2,8 @@ import APP from '@src/infra/http/app';
 import logger from '@plugins/logger';
 import plugins from '@plugins/index';
 
+import verifyJWT from '@plugins/verifyJWT';
+
 import moduleRoutes from '@modules/modules.routers';
 
 async function start() {
@@ -9,7 +11,7 @@ async function start() {
 
   const app: APP = new APP({
     options: { logger },
-    plugins,
+    plugins: plugins.concat(verifyJWT),
     routers: [moduleRoutes],
   });
 
